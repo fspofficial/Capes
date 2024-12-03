@@ -28,7 +28,7 @@ object PlaceholderEntity {
 
     init {
         MinecraftClient.getInstance().skinProvider.fetchSkinTextures(gameProfile).thenAccept {
-            skin = it
+            skin = it.get()
             slim = skin.model == SkinTextures.Model.SLIM
         }
     }

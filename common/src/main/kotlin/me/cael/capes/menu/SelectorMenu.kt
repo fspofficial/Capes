@@ -11,6 +11,7 @@ import net.minecraft.client.gui.widget.ButtonWidget
 import net.minecraft.client.option.GameOptions
 import net.minecraft.client.render.DiffuseLighting
 import net.minecraft.client.render.entity.EntityRendererFactory
+import net.minecraft.client.render.entity.equipment.EquipmentModelLoader
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.screen.ScreenTexts
 import net.minecraft.text.Text
@@ -90,12 +91,12 @@ class SelectorMenu(parent: Screen, gameOptions: GameOptions) : MainMenu(parent, 
         val immediate = MinecraftClient.getInstance().bufferBuilders.entityVertexConsumers
         val ctx = EntityRendererFactory.Context(
             MinecraftClient.getInstance().entityRenderDispatcher,
-            MinecraftClient.getInstance().itemRenderer,
+            MinecraftClient.getInstance().itemModelManager,
             MinecraftClient.getInstance().mapRenderer,
             MinecraftClient.getInstance().blockRenderManager,
             MinecraftClient.getInstance().resourceManager,
-            MinecraftClient.getInstance().entityModelLoader,
-            MinecraftClient.getInstance().equipmentModelLoader,
+            MinecraftClient.getInstance().loadedEntityModels,
+            EquipmentModelLoader(),
             MinecraftClient.getInstance().textRenderer
         )
         val displayPlayerEntityRenderer = DisplayPlayerEntityRenderer(ctx, entity.slim)

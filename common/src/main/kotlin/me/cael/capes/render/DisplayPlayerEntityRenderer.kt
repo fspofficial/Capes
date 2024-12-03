@@ -28,8 +28,7 @@ class DisplayPlayerEntityRenderer(val ctx: EntityRendererFactory.Context, slim: 
         ),
         0.5f
     ) {
-
-    val elytra = ElytraEntityModel(ctx.modelLoader.getModelPart(EntityModelLayers.ELYTRA))
+    val elytra = ElytraEntityModel(ctx.entityModels.getModelPart(EntityModelLayers.ELYTRA))
 
     fun render(livingEntity : PlaceholderEntity, tickDelta: Float, matrixStack: MatrixStack, vertexConsumerProvider: VertexConsumerProvider, light: Int) {
         setModelPose()
